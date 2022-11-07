@@ -2,7 +2,7 @@
 
 This is SKK like ddc source.
 
-![logo](./suconv_2x.png)
+![logo](./suconv.png)
 
 Logo by @peacock0803sz thanks.
 
