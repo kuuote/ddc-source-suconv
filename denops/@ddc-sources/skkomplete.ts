@@ -35,7 +35,7 @@ export class Source extends BaseSource<Params> {
       dict.getCandidates(match[0]).map((c) => {
         return {
           word: c[0],
-          abbr: c[0] + (c[1] ? ";" + c[1] : ""),
+          abbr: " " + c[0] + (c[1] ? ";" + c[1] : ""),
         };
       }),
     );
