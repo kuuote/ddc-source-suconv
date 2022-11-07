@@ -2,6 +2,8 @@
 
 This is SKK like ddc source.
 
+Project name by @raa0121
+
 ![logo](./suconv.png)
 
 Logo by @peacock0803sz thanks.
