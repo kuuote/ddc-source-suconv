@@ -9,7 +9,7 @@ type Params = {
   dictionary: string;
 };
 
-const re = /[a-zA-Z';-]+$/;
+const re = /[a-zA-Z';,.-]+$/;
 
 const dict = new Dictionary();
 
