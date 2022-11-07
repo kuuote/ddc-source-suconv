@@ -3,7 +3,7 @@ import {
   Context,
   Item,
 } from "https://deno.land/x/ddc_vim@v3.0.0/types.ts";
-import { Dictionary } from "./skkomplete/dict.ts";
+import { Dictionary } from "./suconv/dict.ts";
 
 type Params = {
   dictionary: string;

@@ -1,9 +1,9 @@
 function! s:enable() abort
-  let b:skkomplete_spill = ddc#custom#get_buffer()
+  let b:suconv_spill = ddc#custom#get_buffer()
   call ddc#custom#patch_buffer(#{
-  \   sources: ['skkomplete'],
+  \   sources: ['suconv'],
   \   sourceOptions: #{
-  \     skkomplete: #{
+  \     suconv: #{
   \       converters: [],
   \       matchers: [],
   \       sorters: [],
@@ -14,13 +14,13 @@ function! s:enable() abort
 endfunction
 
 function! s:disable() abort
-  if has_key(b:, 'skkomplete_spill')
-    call ddc#custom#set_buffer(b:skkomplete_spill)
-    unlet b:skkomplete_spill
+  if has_key(b:, 'suconv_spill')
+    call ddc#custom#set_buffer(b:suconv_spill)
+    unlet b:suconv_spill
   endif
 endfunction
 
-augroup skkomplete
+augroup suconv
   autocmd InsertLeave * call s:disable()
 augroup END
 

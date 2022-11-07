@@ -1,6 +1,10 @@
-# skkomplete
+# suconv
 
 This is SKK like ddc source.
+
+![logo](./suconv_2x.png)
+
+Logo by @peacock0803sz thanks.
 
 inspired by
 [asyncomplete-skk](https://github.com/mattn/asyncomplete-skk.vim)([article](https://zenn.dev/mattn/articles/5a84f6a09f907c374577))
