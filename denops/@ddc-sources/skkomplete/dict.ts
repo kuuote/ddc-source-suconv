@@ -2,6 +2,7 @@ import { Trie } from "./trie.ts";
 import { romToHira } from "./rom_hira.ts";
 import { kanaConvert } from "./convert.ts";
 import { getOkuriStr } from "./okuri.ts";
+import { hiraToKata } from "./hira_kata.ts";
 
 const okuriAriMarker = ";; okuri-ari entries.";
 const okuriNasiMarker = ";; okuri-nasi entries.";
@@ -67,7 +68,7 @@ export class Dictionary {
       const candidates = [...this.#okuriNasi]
         .filter((e) => e[0].startsWith(inputRaw));
       candidates.sort((a, b) => a[0].localeCompare(b[0]));
-      return [[input], ...candidates.flatMap((e) => e[1])];
+      return [[input], [hiraToKata(input)], ...candidates.flatMap((e) => e[1])];
     }
 
     const [, kana, okuri] = input.split(/;/);
