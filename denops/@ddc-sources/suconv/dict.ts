@@ -64,7 +64,7 @@ export class Dictionary {
     const input = kanaConvert(trie, inputRaw);
 
     // abbrev
-    if (input[0] !== ";") {
+    if (!input.includes(";")) {
       const candidates = [...this.#okuriNasi]
         .filter((e) => e[0].startsWith(inputRaw));
       candidates.sort((a, b) => a[0].localeCompare(b[0]));
@@ -76,14 +76,18 @@ export class Dictionary {
       const candidates = [...this.#okuriNasi]
         .filter((e) => e[0].startsWith(kana.replace(/[a-z]*$/, "")));
       candidates.sort((a, b) => a[0].localeCompare(b[0]));
-      return candidates.flatMap((e) => e[1]);
+      if (kana.length === 0) {
+        return candidates.flatMap((e) => e[1]);
+      } else {
+        return candidates.flatMap((e) => e[1]).map((c) => [kana + c[0], c[1]]);
+      }
     } else {
-      const okuriStr = getOkuriStr(kana, okuri);
+      const okuriStr = getOkuriStr(okurinasi, okuriari);
       if (okuriStr == null) {
         return [];
       }
       return (this.#okuriAri.get(okuriStr) ?? [])
-        .map((c) => [c[0] + okuri, c[1]]);
+        .map((c) => [kana + c[0] + okuriari, c[1]]);
     }
   }
 }
