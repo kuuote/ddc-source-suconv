@@ -71,10 +71,14 @@ export class Dictionary {
       return [[input], [hiraToKata(input)], ...candidates.flatMap((e) => e[1])];
     }
 
-    const [, kana, okuri] = input.split(/;/);
-    if (okuri == null) {
+    const [kana, okurinasi, okuriari] = input.split(/;/);
+    // 送りなし部分にひらがなが全く無い場合マッチ候補が多すぎて重いので弾く
+    if (okurinasi.match(/^\w*$/)) {
+      return [[kana], [hiraToKata(kana)]];
+    }
+    if (okuriari == null) {
       const candidates = [...this.#okuriNasi]
-        .filter((e) => e[0].startsWith(kana.replace(/[a-z]*$/, "")));
+        .filter((e) => e[0].startsWith(okurinasi.replace(/\w*$/, "")));
       candidates.sort((a, b) => a[0].localeCompare(b[0]));
       if (kana.length === 0) {
         return candidates.flatMap((e) => e[1]);
